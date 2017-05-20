@@ -1,3 +1,8 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+  <br/>
+     <fd-search-bar (localizacao)="exibirLocalizacao($event)"></fd-search-bar>
+  <br/>
+  <br/>
+      <fd-fd-host-panel [localizacao]="localizacao" ></fd-fd-host-panel>
+
+  </div>

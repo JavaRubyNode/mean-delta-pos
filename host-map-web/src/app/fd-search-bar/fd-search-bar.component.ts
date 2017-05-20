@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {HttpClientService} from '../http-client.service';
 
 @Component({
   selector: 'fd-search-bar',
@@ -13,10 +14,13 @@ export class FdSearchBarComponent implements OnInit {
 
   dominio: String;
 
-  constructor() { }
+  @Output()
+  localizacao: EventEmitter<any>=new EventEmitter<any>()
+
+  constructor(private httpclient:HttpClientService) { }
 
   pesquisar(): void{
-    alert(this.dominio)
+   this.httpclient.get('http://ip-api.com/json/'+this.dominio).subscribe((data)=>{this.localizacao.emit(data)},(error)=>console.error(error));
   }
 
 }
