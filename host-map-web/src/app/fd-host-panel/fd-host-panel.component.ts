@@ -8,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class FdHostPanelComponent implements OnInit {
 
   @Input()
-  localizacao: any;
+  localizacao: any = new Object();
 
   constructor() { }
 
