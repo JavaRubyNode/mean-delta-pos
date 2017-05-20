@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Localizacao} from '../model/Localizacao';
 
 @Component({
   selector: 'fd-fd-host-panel',
@@ -8,7 +9,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class FdHostPanelComponent implements OnInit {
 
   @Input()
-  localizacao: any = new Object();
+  localizacao: any = new Localizacao();
 
   constructor() { }
 

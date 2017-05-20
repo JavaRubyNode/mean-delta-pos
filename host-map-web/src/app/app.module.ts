@@ -10,18 +10,33 @@ import { FdHostPanelComponent } from './fd-host-panel/fd-host-panel.component';
 import { AgmCoreModule } from '@agm/core';
 import {environment} from '../environments/environment';
 import { MapContainerComponent } from './map-container/map-container.component';
+import { MenuTopComponent } from './menu-top/menu-top.component';
+import {Route, RouterModule, Routes} from '@angular/router';
+import { MapPageComponent } from './map-page/map-page.component';
+import { HistoricoPageComponent } from './historico-page/historico-page.component';
+
+export const rotas : Routes = [
+  { path: '', redirectTo: '/map', pathMatch: 'full' },
+  { path: 'map', component: MapPageComponent },
+  { path: 'historico', component: HistoricoPageComponent }
+];
+
 
 @NgModule({
   declarations: [
     AppComponent,
     FdSearchBarComponent,
     FdHostPanelComponent,
-    MapContainerComponent
+    MapContainerComponent,
+    MenuTopComponent,
+    MapPageComponent,
+    HistoricoPageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    RouterModule.forRoot(rotas),
     AgmCoreModule.forRoot({
       apiKey: environment.googleApiKeys
     })
