@@ -36,7 +36,7 @@ export const rotas : Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(rotas),
+    RouterModule.forRoot(rotas,{useHash: true}),
     AgmCoreModule.forRoot({
       apiKey: environment.googleApiKeys
     })
