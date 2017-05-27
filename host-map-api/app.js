@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-
+let localizacaoRoute = require('./routes/location.route');
 var app = express();
 
 // view engine setup
@@ -22,6 +22,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/api/localizacao', localizacaoRoute);
+let connection = require('./config/connection');
+connection.connect();
 app.use('/', index);
 app.use('/users', users);
 
