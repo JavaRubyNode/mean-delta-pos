@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Localizacao} from "../model/Localizacao";
 import {HttpClientService} from "../http-client.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'fd-historico-page',
@@ -11,16 +12,17 @@ export class HistoricoPageComponent implements OnInit {
 
   historico: Localizacao[];
 
-  constructor(private HttpClient: HttpClientService) {
+  constructor(private httpClient: HttpClientService, private _route:Router) {
   }
 
   ngOnInit() {
-    this.HttpClient.get('http://localhost:3000/api/localizacao').subscribe((docs)=>{
-      this.historico=docs
-    });
-
-
-
-
+    this.httpClient
+      .get('http://localhost:3000/api/localizacao')
+      .subscribe((docs) => {
+        this.historico = docs
+      });
+  }
+  consultarMapa(query:String){
+    this._route.navigate(['/map', query]);
   }
 }
